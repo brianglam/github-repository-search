@@ -8,11 +8,7 @@ const QueryTextBox = (props) => {
         props.dispatch(updateQueryField(event.target.value))
     }
 
-    return (
-        <div>
-            <input value={props.queryText} onChange={handleInputTextChange}></input>
-        </div>
-    )
+    return (<input className="query-input" value={props.queryText} onChange={handleInputTextChange}></input>)
 }
 
 const mapStateToProps = (state) => {
