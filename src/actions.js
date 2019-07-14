@@ -4,6 +4,7 @@ export const UPDATE_USER_FIELD = "UPDATE_USER_FIELD";
 export const UPDATE_ORG_FIELD = "UPDATE_ORG_FIELD";
 export const UPDATE_LICENSE_FIELD = "UPDATE_LICENSE_FIELD";
 export const UPDATE_INCLUDE_FORKED_FIELD = "UPDATE_INCLUDE_FORKED_FIELD";
+export const UPDATE_INPUT_WARNINGS = "UPDATE_INPUT_WARNINGS"
 
 
 
@@ -46,6 +47,14 @@ export const updateLicenseField= (text) => {
 export const updateIncludeForkedField= (text) => {
     return {
         type: UPDATE_INCLUDE_FORKED_FIELD,
+        payload: text
+    }
+}
+
+
+export const updateInputWarnings= (text) => {
+    return {
+        type: UPDATE_INPUT_WARNINGS,
         payload: text
     }
 }

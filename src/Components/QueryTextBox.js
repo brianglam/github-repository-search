@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {updateQueryField} from './../actions'
+import {validateData} from './../ValidateData'
 
 const QueryTextBox = (props) => {
 
@@ -8,7 +9,7 @@ const QueryTextBox = (props) => {
         props.dispatch(updateQueryField(event.target.value))
     }
 
-    return (<input className="query-input" value={props.queryText} onChange={handleInputTextChange}></input>)
+    return (<input className="query-input" onBlur={validateData} value={props.queryText} onChange={handleInputTextChange}></input>)
 }
 
 const mapStateToProps = (state) => {

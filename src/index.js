@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import { createStore, compose } from 'redux'
-import {UPDATE_QUERY_FIELD, UPDATE_STARS_FIELD, UPDATE_USER_FIELD, UPDATE_ORG_FIELD, UPDATE_LICENSE_FIELD, UPDATE_INCLUDE_FORKED_FIELD} from './actions'
+import {UPDATE_QUERY_FIELD, UPDATE_STARS_FIELD, UPDATE_USER_FIELD, UPDATE_ORG_FIELD, UPDATE_LICENSE_FIELD, UPDATE_INCLUDE_FORKED_FIELD, UPDATE_INPUT_WARNINGS} from './actions'
 
 let queryText=""
-let stars=-1
+let stars=""
 let user=""
 let org=""
 let license=""
@@ -24,7 +24,7 @@ if (searchParams) {
         if (key==="queryText") {
             queryText=val
         } else if (key==="stars") {
-            stars=parseInt(val)
+            stars=val
         } else if (key==="user") {
             user=val
         } else if (key==="org") {
@@ -43,11 +43,14 @@ const initialState = {
     user: user,
     org: org,
     license: license,
-    includeForked: includeForked
+    includeForked: includeForked,
+    inputWarnings: {
+        queryWarning: "",
+        starWarning: "",
+    }
 }
 
 const reducer = (state=initialState, action) => {
-    // console.log('reducer', state, action)
 
     switch (action.type) {
         case UPDATE_QUERY_FIELD:
@@ -74,6 +77,11 @@ const reducer = (state=initialState, action) => {
             return {...state,
                 includeForked: action.payload
             }
+        case UPDATE_INPUT_WARNINGS:
+            return {...state,
+                inputWarnings: action.payload
+            }
+        
         default:
             return state
     }

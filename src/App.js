@@ -3,7 +3,9 @@ import './App.css';
 import { Provider } from 'react-redux'
 import {store} from './index.js'
 import QueryTextBox from './Components/QueryTextBox'
+import QueryWarning from './Components/QueryWarning'
 import StarsTextBox from './Components/StarsTextBox'
+import StarWarning from './Components/StarWarning'
 import UserTextBox from './Components/UserTextBox'
 import OrgTextBox from './Components/OrgTextBox'
 import LicenseDropDown from './Components/LicenseDropDown'
@@ -20,6 +22,7 @@ function App() {
                     <BrowserRouter>
                         <div className="query-container">
                             <div className="query-title">Query</div>
+                            <QueryWarning />
                             <QueryTextBox />
                         </div>
 
@@ -27,6 +30,7 @@ function App() {
                         
                         <div className="stars-container">
                             <div className="stars-title">Stars</div>
+                            <StarWarning />
                             <StarsTextBox />
                         </div>
 

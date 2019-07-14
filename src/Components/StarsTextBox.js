@@ -1,16 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {updateStarsField} from './../actions'
+import {validateData} from './../ValidateData'
 
 const StarsTextBox = (props) => {
 
     const handleInputTextChange = (event)=>{
-        props.dispatch(updateStarsField(parseInt(event.target.value)))
+        props.dispatch(updateStarsField(event.target.value))
     }
 
     return (
         <div>
-            <input value={props.stars} onChange={handleInputTextChange}></input>
+            <input onBlur={validateData} value={props.stars} onChange={handleInputTextChange}></input>
         </div>
     )
 }
