@@ -1,0 +1,8 @@
+.query-container {
+    display: block;
+    text-align: center;
+}
+
+.query-input {
+    width: 90%;
+}
