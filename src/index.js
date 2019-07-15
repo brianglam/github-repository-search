@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import { createStore, compose } from 'redux'
-import {UPDATE_QUERY_FIELD, UPDATE_STARS_FIELD, UPDATE_USER_FIELD, UPDATE_ORG_FIELD, UPDATE_LICENSE_FIELD, UPDATE_INCLUDE_FORKED_FIELD, UPDATE_INPUT_WARNINGS} from './actions'
+import { createStore, compose, applyMiddleware } from 'redux'
+import {UPDATE_QUERY_FIELD, UPDATE_STARS_FIELD, UPDATE_USER_FIELD, UPDATE_ORG_FIELD, UPDATE_LICENSE_FIELD, UPDATE_INCLUDE_FORKED_FIELD, UPDATE_INPUT_WARNINGS, FETCH_REPOS_START, FETCH_REPOS_SUCCESS, FETCH_REPOS_FAILURE, FETCH_REPOS_SERVER_ERROR} from './actions'
+import thunk from 'redux-thunk'
 
 let queryText=""
 let stars=""
@@ -47,7 +48,10 @@ const initialState = {
     inputWarnings: {
         queryWarning: "",
         starWarning: "",
-    }
+    },
+    repos: {},
+    error: "",
+    loading: false
 }
 
 const reducer = (state=initialState, action) => {
@@ -81,17 +85,36 @@ const reducer = (state=initialState, action) => {
             return {...state,
                 inputWarnings: action.payload
             }
-        
+        case FETCH_REPOS_START:
+            return {...state,
+                loading: true
+            }
+        case FETCH_REPOS_SUCCESS:
+            return {...state,
+                loading: false,
+                repos: action.payload
+            }
+        case FETCH_REPOS_FAILURE:
+            return {...state,
+                loading: false,
+                error: action.payload
+            }
+        case FETCH_REPOS_SERVER_ERROR:
+            return {...state,
+                loading:false,
+                error: action.payload
+            }
         default:
             return state
     }
 }
 
 const enhancers = compose(
+    applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 )
 
-export const store = createStore(reducer, initialState, enhancers)
+export const store = createStore(reducer, enhancers)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

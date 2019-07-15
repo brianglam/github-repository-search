@@ -9,7 +9,7 @@ const LicenseDropDown = (props) => {
     }
 
     return (
-        <select value={props.license} onChange={handleInputChange}>
+        <select disabled={props.loading} value={props.license} onChange={handleInputChange}>
             <option value="">-</option>
             <option value="mit">MIT</option>
             <option value="apache-2.0">Apache</option>
@@ -24,7 +24,8 @@ const LicenseDropDown = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        license: state.license
+        license: state.license,
+        loading: state.loading
     }
 }
 
