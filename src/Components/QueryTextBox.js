@@ -9,12 +9,13 @@ const QueryTextBox = (props) => {
         props.dispatch(updateQueryField(event.target.value))
     }
 
-    return (<input className="query-input" onBlur={validateData} value={props.queryText} onChange={handleInputTextChange}></input>)
+    return (<input disabled={props.loading} className="query-input" onBlur={validateData} value={props.queryText} onChange={handleInputTextChange}></input>)
 }
 
 const mapStateToProps = (state) => {
     return {
-        queryText: state.queryText
+        queryText: state.queryText,
+        loading: state.loading
     }
 }
 

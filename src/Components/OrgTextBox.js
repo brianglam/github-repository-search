@@ -10,14 +10,15 @@ const OrgTextBox = (props) => {
 
     return (
         <div>
-            <input value={props.org} onChange={handleInputTextChange}></input>
+            <input disabled={props.loading} value={props.org} onChange={handleInputTextChange}></input>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        org: state.org
+        org: state.org,
+        loading: state.loading
     }
 }
 

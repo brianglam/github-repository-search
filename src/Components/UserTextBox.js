@@ -10,14 +10,15 @@ const UserTextBox = (props) => {
 
     return (
         <div>
-            <input value={props.user} onChange={handleInputTextChange}></input>
+            <input disabled={props.loading} value={props.user} onChange={handleInputTextChange}></input>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        loading: state.loading
     }
 }
 

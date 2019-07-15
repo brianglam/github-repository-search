@@ -9,13 +9,14 @@ const IncludeForkedCheckBox = (props) => {
     }
 
     return (
-        <input defaultChecked={props.includeForked} onClick={handleInputChange} type="checkbox"></input>
+        <input disabled={props.loading} defaultChecked={props.includeForked} onClick={handleInputChange} type="checkbox"></input>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        includeForked: state.includeForked
+        includeForked: state.includeForked,
+        loading: state.loading
     }
 }
 

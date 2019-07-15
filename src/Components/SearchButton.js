@@ -29,7 +29,7 @@ const SearchButton = props => {
     }
 
     return (
-        <button onClick={handleClick}>Search</button>
+        <button disabled={props.loading} onClick={handleClick}>Search</button>
     )
 }
 
@@ -40,7 +40,8 @@ const mapStateToProps = state => {
         user: state.user,
         org: state.org,
         license: state.license,
-        includeForked: state.includeForked
+        includeForked: state.includeForked,
+        loading: state.loading
     }
 }
 
