@@ -10,7 +10,7 @@ const OrgTextBox = (props) => {
 
     return (
         <div>
-            <input disabled={props.loading} value={props.org} onChange={handleInputTextChange}></input>
+            <input disabled={props.loading} placeholder="The Company" value={props.org} onChange={handleInputTextChange}></input>
         </div>
     )
 }

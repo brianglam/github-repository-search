@@ -29,7 +29,7 @@ const SearchButton = props => {
     }
 
     return (
-        <button disabled={props.loading} onClick={handleClick}>Search</button>
+        <button className="search-button" disabled={props.loading} onClick={handleClick}>SEARCH</button>
     )
 }
 
