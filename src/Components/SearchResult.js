@@ -22,7 +22,21 @@ const SearchResult = props => {
         return (
             <>
                 <div>Search Results:</div>
-                {repos.map((item, index)=> <div key={index}>{item.name}</div>)}
+                {repos.map((item, index)=> 
+                
+                <div className="search-result" key={index}>
+                    <div className="search-result-title">{item.full_name}</div>
+
+                    <div className="search-result-top-box">
+                        <div>Stars: {item.stargazers_count}</div>
+                        <div>License: {item.license? item.license.name : "none"}</div>
+                        <div>{item.fork? "Forked":"Not forked"}</div>
+                    </div>
+                    <div className="search-result-description">
+                        <div>{item.description}</div>
+                    </div>
+                    
+                </div>)}
             </>
             )
 
