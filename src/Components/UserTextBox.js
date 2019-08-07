@@ -10,7 +10,7 @@ const UserTextBox = (props) => {
 
     return (
         <div>
-            <input disabled={props.loading} value={props.user} onChange={handleInputTextChange}></input>
+            <input disabled={props.loading} placeholder="tech-lead" value={props.user} onChange={handleInputTextChange}></input>
         </div>
     )
 }

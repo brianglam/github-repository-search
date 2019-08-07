@@ -11,7 +11,11 @@ const SearchResult = props => {
     const { loading, repos, error } = props;
 
     if (loading) {
-        return (<div>loading</div>)
+        return (
+        <div className="loading-container">
+            <div className="loading"></div>
+        </div>
+        )
     }
 
     if (error) {
@@ -21,14 +25,30 @@ const SearchResult = props => {
     if (repos.length) {
         return (
             <>
-                <div>Search Results:</div>
-                {repos.map((item, index)=> <div key={index}>{item.name}</div>)}
+                <div className=".search-results-header-container">
+                    <div className="search-results-header">SEARCH RESULTS</div>
+                </div>
+                {repos.map((item, index)=> 
+                
+                <div className="search-result" key={index}>
+                    <div className="search-result-title">{item.full_name}</div>
+
+                    <div className="search-result-top-box">
+                        <div>Stars: {item.stargazers_count}</div>
+                        <div>License: {item.license? item.license.name : "none"}</div>
+                        <div>{item.fork? "Forked":"Not forked"}</div>
+                    </div>
+                    <div className="search-result-description">
+                        <div>{item.description}</div>
+                    </div>
+                    
+                </div>)}
             </>
             )
 
     }
 
-    return (<div>No results</div>)
+    return (<div></div>)
 }
 
 const mapStateToProps = state => {
