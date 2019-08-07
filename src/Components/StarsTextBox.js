@@ -11,7 +11,7 @@ const StarsTextBox = (props) => {
 
     return (
         <div>
-            <input disabled={props.loading} onBlur={validateData} value={props.stars} onChange={handleInputTextChange}></input>
+            <input disabled={props.loading} placeholder="10, >50, 20..100" onBlur={validateData} value={props.stars} onChange={handleInputTextChange}></input>
         </div>
     )
 }

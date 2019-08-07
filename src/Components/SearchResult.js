@@ -11,7 +11,11 @@ const SearchResult = props => {
     const { loading, repos, error } = props;
 
     if (loading) {
-        return (<div>loading</div>)
+        return (
+        <div className="loading-container">
+            <div className="loading"></div>
+        </div>
+        )
     }
 
     if (error) {
@@ -21,7 +25,9 @@ const SearchResult = props => {
     if (repos.length) {
         return (
             <>
-                <div>Search Results:</div>
+                <div className=".search-results-header-container">
+                    <div className="search-results-header">SEARCH RESULTS</div>
+                </div>
                 {repos.map((item, index)=> 
                 
                 <div className="search-result" key={index}>
@@ -42,7 +48,7 @@ const SearchResult = props => {
 
     }
 
-    return (<div>No results</div>)
+    return (<div></div>)
 }
 
 const mapStateToProps = state => {
